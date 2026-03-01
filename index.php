@@ -24,7 +24,7 @@
     <title>Calculadora 4 Operações</title>
 </head>
 <body>
-    <h1>Minha Calculadora Completa!</h1>
+    <h1>Calculadora do Fischer!</h1>
 
     <form method="POST" action="calculadora.php">
         Valor A: <input type="number" name="a" required><br><br>
