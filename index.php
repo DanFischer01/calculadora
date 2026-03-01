@@ -1,40 +1,53 @@
 <?php
-    // Definimos a variável como vazia para não dar erro ao abrir a página
     $resultado = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $a = $_POST["a"];
         $b = $_POST["b"];
-        
-        // Faz a soma simples
-        $resultado = $a + $b;
+        $op = $_POST["operacao"];
+
+        // Aqui o PHP decide qual conta fazer
+        if ($op == "soma") $resultado = $a + $b;
+        if ($op == "sub")  $resultado = $a - $b;
+        if ($op == "mult") $resultado = $a * $b;
+        if ($op == "div") {
+            // Regra matemática: não existe divisão por zero!
+            $resultado = ($b != 0) ? $a / $b : "Erro: Divisão por 0";
+        }
     }
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Calculadora Simples</title>
+    <title>Calculadora 4 Operações</title>
 </head>
 <body>
+    <h1>Minha Calculadora Completa!</h1>
 
-    <h1>Minha Calculadora!</h1>
+    <form method="POST" action="calculadora.php">
+        Valor A: <input type="number" name="a" required><br><br>
+        
+        Operação: 
+        <select name="operacao">
+            <option value="soma">Somar (+)</option>
+            <option value="sub">Subtrair (-)</option>
+            <option value="mult">Multiplicar (*)</option>
+            <option value="div">Dividir (/)</option>
+        </select><br><br>
 
-    <form method="POST" action="">
-        Número A: <input type="number" name="a" required><br>
-        Número B: <input type="number" name="b" required><br>
-        <input type="submit" value="Somar">
+        Valor B: <input type="number" name="b" required><br><br>
+        
+        <input type="submit" value="Calcular">
     </form>
 
-    <br>
+    <hr>
 
     <?php
-        // Só mostra o resultado se o formulário tiver sido enviado
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            echo "<strong>Resultado: </strong>" . $resultado;
-        }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        echo "<h3>Resultado: " . $resultado . "</h3>";
+    }
     ?>
-
 </body>
 </html>
