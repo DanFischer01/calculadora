@@ -1,1 +1,1 @@
-# Trabalho proposto pelo professor André Neves. CALCULADORA
+# Trabalho proposto pelo professor André Neves: Calculadora 
