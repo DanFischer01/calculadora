@@ -39,6 +39,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculadora 4 Operações</title>
+    <link rel= "stylesheet" href="calculadora.css">
 </head>
 <body>
     <h1>Calculas como eu calculo?</h1>
