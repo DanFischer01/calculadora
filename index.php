@@ -14,6 +14,11 @@
             // Regra matemática: não existe divisão por zero!
             $resultado = ($b != 0) ? $a / $b : "Erro: Divisão por 0";
         }
+        // Adicionando Potência e Raiz mantendo sua estrutura original:
+        if ($op == "pot")  $resultado = pow($a, $b);
+        if ($op == "raiz") {
+            $resultado = ($a >= 0) ? sqrt($a) : "Erro: Raiz de número negativo";
+        }
     }
 ?>
 
@@ -26,7 +31,7 @@
 <body>
     <h1>Calculas como eu calculo?</h1>
 
-    <form method="POST" action="calculadora.php">
+    <form method="POST" action="trabalho.php">
         Valor A: <input type="number" name="a" required><br><br>
         
         Operação: 
@@ -35,6 +40,8 @@
             <option value="sub">Subtrair (-)</option>
             <option value="mult">Multiplicar (*)</option>
             <option value="div">Dividir (/)</option>
+            <option value="pot">Potência (A elevado a B)</option>
+            <option value="raiz">Raiz Quadrada (de A)</option>
         </select><br><br>
 
         Valor B: <input type="number" name="b" required><br><br>
